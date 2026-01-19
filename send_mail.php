@@ -46,15 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         // CONFIG SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';          // Serveur SMTP (Gmail ici)
+        $mail->Host = 'smtp-devnicolas.alwaysdata.net';          // Serveur SMTP 
         $mail->SMTPAuth = true;
         $mail->Username = 'ramalho.nicolas.miguel@gmail.com';
-        $mail->Password = 'A_REMPLACER'; // Mot de passe d'application Gmail
+        $mail->Username = 'devnicolas@alwaysdata.net';
+        $mail->Password = $env['SMTP_PASSWORD']; // Mot de passe d'application Gmail
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Expéditeur
-        $mail->setFrom('TON_EMAIL@gmail.com', 'Formulaire DevNicolas');
+        $mail->setFrom('devnicolas@alwaysdata.net', 'Formulaire DevNicolas');
 
         // Destinataire
         $mail->addAddress('ramalho.nicolas.miguel@gmail.com');
