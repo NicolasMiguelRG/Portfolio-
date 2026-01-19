@@ -7,6 +7,8 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
+$env = parse_ini_file(__DIR__ . '/.env');
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -71,12 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Envoi
         $mail->send();
 
-        // Redirection succès
         header("Location: contact.html?success=1");
         exit;
     } catch (Exception $e) {
-        // Redirection erreur
-        header("Location: contact.html?error=1");
+        echo "Erreur SMTP : " . $mail->ErrorInfo;
         exit;
     }
 }

@@ -39,9 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const success = document.querySelector(".form-success");
 
   if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    form.addEventListener("submit", () => {
+      // On NE bloque plus l'envoi du formulaire
+      // e.preventDefault();  ← supprimé
 
+      // On affiche l'animation de succès
       success.classList.add("visible");
 
       setTimeout(() => {
